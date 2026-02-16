@@ -86,6 +86,10 @@ body.mode-selector-open .site-header {
   margin: auto;
   margin-bottom: 25px;
   color: #ffffff;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -100,31 +104,33 @@ body.mode-selector-open .site-header {
 
 @media (max-width: 1440px) {
   #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
-    font-size: 80px;
+    font-size: 78px;
   }
 }
 
 @media (max-width: 1440px) {
   #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
-    font-size: 62px;
+    font-size: 64px;
   }
 }
 
 @media (max-width: 1024px) {
   #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
-    font-size: 62px;
+    font-size: 58px;
   }
 }
 
 @media (max-width: 550px) {
   #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
-    font-size: 48px;
+    font-size: 44px;
+    letter-spacing: 0.02em;
+    line-height: 0.98;
   }
 }
 
 #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 svg {
   display: block;
-  margin: auto;
+  margin: 14px auto 0;
 }
 
 #mode-selector-overlay .mode-selector-services .services_wrapper .service a img {
