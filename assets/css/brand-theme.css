@@ -16,3 +16,12 @@
   --brand-accent-alt: var(--brand-clay);
   --brand-surface-alt: var(--brand-adriatic);
 }
+
+/* Rebrand typography baseline (without global !important overrides). */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Satoshi", sans-serif;
+}

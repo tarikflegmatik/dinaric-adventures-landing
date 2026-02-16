@@ -2040,9 +2040,9 @@ if (section) {
   var scrollDistance = window.innerHeight * (isMobile ? 1.3 : 1.5);
   gsap.fromTo(section, {
     backgroundColor: '#ffffff',
-    color: '#1a1a1a'
+    color: '#2C2F33'
   }, {
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#2C2F33',
     color: '#ffffff',
     scrollTrigger: {
       trigger: inner,
@@ -2067,7 +2067,7 @@ if (section) {
   });
 } // if (document.querySelector("#home_agents")) {
 // 	gsap.to("#home_agents", {
-// 		backgroundColor: "#1A1A1A",
+// 		backgroundColor: "#2C2F33",
 // 		ease: "none",
 // 		scrollTrigger: {
 // 			trigger: "#home_agents",

@@ -10,7 +10,7 @@ body.mode-selector-open .site-header .header_right {
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background-color: #1a1a1a;
+  background-color: #2C2F33;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -29,7 +29,7 @@ body.mode-selector-open .site-header {
 }
 
 #mode-selector-overlay .mode-selector-services {
-  background-color: #1a1a1a;
+  background-color: #2C2F33;
 }
 
 #mode-selector-overlay .mode-selector-services .services_wrapper {
