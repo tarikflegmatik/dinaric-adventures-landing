@@ -6,6 +6,8 @@
   var overlayTitles = overlay.querySelectorAll('.service a h2');
   var overlayImages = overlay.querySelectorAll('.service a img');
   var compass = overlay.querySelector('.mode-selector-compass img');
+  var openTrigger = document.getElementById('mode-selector-open');
+  var closeTrigger = document.getElementById('mode-selector-close');
   var isClosing = false;
   var activeDirection = null;
   var BASE_ROTATION_OFFSET = -45;
@@ -14,6 +16,43 @@
   var ANGLE_RIGHT = BASE_ROTATION_OFFSET + 30;
 
   document.body.classList.add('mode-selector-open');
+
+  function openModeSelector() {
+    isClosing = false;
+    if (closeTrigger) {
+      closeTrigger.classList.add('is-active');
+    }
+    document.body.classList.add('mode-selector-open');
+    overlay.classList.remove('is-hidden');
+
+    if (window.gsap) {
+      gsap.killTweensOf([overlay, overlayTitles, overlayImages, compass, closeTrigger]);
+      gsap.set(overlay, { clearProps: 'opacity,visibility,pointerEvents' });
+      gsap.set([overlayTitles, overlayImages], {
+        opacity: 1,
+        scale: 1
+      });
+      if (compass) {
+        gsap.set(compass, {
+          rotation: ANGLE_TOP
+        });
+      }
+      if (closeTrigger) {
+        gsap.fromTo(closeTrigger, {
+          autoAlpha: 0,
+          scale: 0.96,
+          rotation: 0
+        }, {
+          autoAlpha: 1,
+          scale: 1,
+          rotation: 0,
+          duration: 0.5,
+          delay: 0.12,
+          ease: 'power2.inOut'
+        });
+      }
+    }
+  }
 
   function initOverlayHeadingAnimations() {
     var overlayHeadings = overlay.querySelectorAll('[data-animate-heading]');
@@ -60,7 +99,11 @@
       var tlOut = gsap.timeline({
         onComplete: function () {
           overlay.classList.add('is-hidden');
+          overlay.style.removeProperty('visibility');
+          overlay.style.removeProperty('pointer-events');
+          overlay.style.removeProperty('opacity');
           document.body.classList.remove('mode-selector-open');
+          isClosing = false;
         }
       });
 
@@ -97,6 +140,13 @@
           stagger: 0.03,
           ease: 'power4.in'
         }, 0)
+        .to(closeTrigger, {
+          duration: 0.3,
+          autoAlpha: 0,
+          scale: 0.96,
+          rotation: 0,
+          ease: 'power2.inOut'
+        }, 0)
         .to(overlay, {
           duration: 0.4,
           opacity: 0,
@@ -106,7 +156,11 @@
     }
 
     overlay.classList.add('is-hidden');
+    overlay.style.removeProperty('visibility');
+    overlay.style.removeProperty('pointer-events');
+    overlay.style.removeProperty('opacity');
     document.body.classList.remove('mode-selector-open');
+    isClosing = false;
   }
 
   overlayCards.forEach(function (card) {
@@ -162,4 +216,19 @@
       closeModeSelector(direction);
     });
   });
+
+  if (openTrigger) {
+    openTrigger.addEventListener('click', function (event) {
+      event.preventDefault();
+      openModeSelector();
+    });
+  }
+
+  if (closeTrigger) {
+    closeTrigger.addEventListener('click', function (event) {
+      event.preventDefault();
+      var direction = activeDirection || 'right';
+      closeModeSelector(direction);
+    });
+  }
 })();
