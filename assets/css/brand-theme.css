@@ -1,0 +1,18 @@
+:root {
+  /* Brand palette scaffold (phase 1 tokenization). */
+  --brand-forest-green: #1f3a2e;
+  --brand-slate-charcoal: #2c2f33;
+  --brand-limestone: #e6e2d8;
+  --brand-clay: #a4573a;
+  --brand-adriatic: #3e5c6e;
+  --brand-brass: #b89a6a;
+
+  /* Semantic aliases for upcoming controlled overrides. */
+  --brand-bg-dark: var(--brand-slate-charcoal);
+  --brand-bg-light: var(--brand-limestone);
+  --brand-text-dark: var(--brand-forest-green);
+  --brand-text-light: var(--brand-limestone);
+  --brand-accent: var(--brand-brass);
+  --brand-accent-alt: var(--brand-clay);
+  --brand-surface-alt: var(--brand-adriatic);
+}

@@ -1870,10 +1870,12 @@ function initHeadingAnimations() {
 }
 
 function setupHeadingAnimation(heading, splits) {
+  if (heading.dataset.headingAnimated === 'true') return;
   var split = SplitText.create(heading, {
     type: 'words, lines'
   });
   splits.set(heading, split);
+  heading.dataset.headingAnimated = 'true';
   gsap.set(heading, {
     autoAlpha: 1
   });

@@ -1,0 +1,175 @@
+body.mode-selector-open {
+  overflow: hidden;
+}
+
+body.mode-selector-open .site-header .header_right {
+  visibility: hidden !important;
+}
+
+#mode-selector-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background-color: #1a1a1a;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+body.mode-selector-open .site-header {
+  pointer-events: none;
+  z-index: 10001;
+}
+
+#mode-selector-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#mode-selector-overlay .mode-selector-services {
+  background-color: #1a1a1a;
+}
+
+#mode-selector-overlay .mode-selector-services .services_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper {
+    flex-direction: column;
+  }
+}
+
+#mode-selector-overlay .mode-selector-services .services_wrapper .service {
+  flex-basis: 50%;
+}
+
+@media (max-width: 1024px) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service {
+    width: 100%;
+  }
+}
+
+#mode-selector-overlay .mode-selector-services .services_wrapper .service a {
+  display: block;
+  width: 100%;
+  height: 100svh;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a {
+    height: 50svh;
+  }
+}
+
+@media (max-width: 768px) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a {
+    height: 50svh;
+  }
+}
+
+@media (min-width: 768px) and (hover: hover) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a:hover img {
+    clip-path: inset(0% 0% 0% 0%);
+  }
+
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a:hover h2 {
+    top: 45%;
+  }
+}
+
+#mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
+  margin: auto;
+  margin-bottom: 25px;
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+  max-width: 70%;
+  text-transform: uppercase;
+  transition: all 0.85s ease-in-out;
+}
+
+@media (max-width: 1440px) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 1440px) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
+    font-size: 62px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
+    font-size: 62px;
+  }
+}
+
+@media (max-width: 550px) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 {
+    font-size: 48px;
+  }
+}
+
+#mode-selector-overlay .mode-selector-services .services_wrapper .service a h2 svg {
+  display: block;
+  margin: auto;
+}
+
+#mode-selector-overlay .mode-selector-services .services_wrapper .service a img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inset(15% 15% 15% 15%);
+  transition: all 0.85s ease-in-out;
+}
+
+@media (max-width: 768px) and (hover: none) {
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a img {
+    clip-path: inset(0% 0% 0% 0%) !important;
+  }
+}
+
+#mode-selector-overlay .mode-selector-compass {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(56px, 4.2vw, 64px);
+  height: clamp(56px, 4.2vw, 64px);
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  overflow: visible;
+  opacity: 0.9;
+}
+
+#mode-selector-overlay .mode-selector-compass img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 50%;
+  transform: rotate(-45deg);
+  mix-blend-mode: screen;
+}
