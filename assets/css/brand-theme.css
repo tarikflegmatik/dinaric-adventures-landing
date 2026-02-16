@@ -15,6 +15,9 @@
   --brand-accent: var(--brand-brass);
   --brand-accent-alt: var(--brand-clay);
   --brand-surface-alt: var(--brand-adriatic);
+  --brand-scrollbar-thumb: var(--brand-accent-alt);
+  --brand-scrollbar-thumb-hover: var(--brand-accent);
+  --brand-scrollbar-track: transparent;
 }
 
 /* Rebrand typography baseline (without global !important overrides). */
@@ -24,4 +27,25 @@ input,
 select,
 textarea {
   font-family: "Satoshi", sans-serif;
+}
+
+html {
+  scrollbar-color: var(--brand-scrollbar-thumb) var(--brand-scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-scrollbar-thumb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-scrollbar-thumb-hover);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-scrollbar-track);
+}
+
+/* Override hardcoded scrollbar-color in themed overflow containers. */
+.page-template-tmpl_accommodation #resort-list .wrapper .front_filters .filter-set dialog#dialog-filter .overflow-wrapper {
+  scrollbar-color: var(--brand-scrollbar-thumb) var(--brand-bg-light);
 }
