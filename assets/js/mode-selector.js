@@ -15,7 +15,32 @@
   var ANGLE_LEFT = BASE_ROTATION_OFFSET - 30;
   var ANGLE_RIGHT = BASE_ROTATION_OFFSET + 30;
 
-  document.body.classList.add('mode-selector-open');
+  function syncBodyScrollLock() {
+    var isModeSelectorOpen = document.body.classList.contains('mode-selector-open');
+    var isMainMenuOpen = !!document.querySelector('.headermenu.is-active');
+
+    if (isModeSelectorOpen || isMainMenuOpen) {
+      document.body.style.overflowY = 'hidden';
+      return;
+    }
+
+    document.body.style.removeProperty('overflow-y');
+  }
+
+  window.syncBodyScrollLock = syncBodyScrollLock;
+  syncBodyScrollLock();
+
+  function getCardEnterState(card, index) {
+    var isMobile = window.matchMedia('(max-width: 1024px)').matches;
+    if (isMobile) {
+      return { x: 0, y: index === 0 ? -44 : 44 };
+    }
+
+    var rect = card.getBoundingClientRect();
+    var centerX = rect.left + (rect.width / 2);
+    var isLeftCard = centerX < (window.innerWidth / 2);
+    return { x: isLeftCard ? -50 : 50, y: 0 };
+  }
 
   function openModeSelector() {
     isClosing = false;
@@ -23,22 +48,46 @@
       closeTrigger.classList.add('is-active');
     }
     document.body.classList.add('mode-selector-open');
-    overlay.classList.remove('is-hidden');
+    syncBodyScrollLock();
 
     if (window.gsap) {
-      gsap.killTweensOf([overlay, overlayTitles, overlayImages, compass, closeTrigger]);
-      gsap.set(overlay, { clearProps: 'opacity,visibility,pointerEvents' });
+      gsap.killTweensOf([overlay, overlayCards, overlayTitles, overlayImages, compass, closeTrigger]);
+      gsap.set(overlay, { opacity: 0, visibility: 'visible', pointerEvents: 'auto' });
+      overlay.classList.remove('is-hidden');
       gsap.set([overlayTitles, overlayImages], {
         opacity: 1,
         scale: 1
+      });
+      overlayCards.forEach(function (card, index) {
+        var state = getCardEnterState(card, index);
+        gsap.set(card, {
+          autoAlpha: 0,
+          x: state.x,
+          y: state.y
+        });
       });
       if (compass) {
         gsap.set(compass, {
           rotation: ANGLE_TOP
         });
       }
+      var tlIn = gsap.timeline();
+      tlIn.to(overlay, {
+        opacity: 1,
+        duration: 0.85,
+        ease: 'power3.out'
+      }, 0)
+      .to(overlayCards, {
+        autoAlpha: 1,
+        x: 0,
+        y: 0,
+        duration: 1.4,
+        stagger: 0.06,
+        ease: 'power3.out',
+        clearProps: 'x,y,opacity,visibility'
+      }, 0.16);
       if (closeTrigger) {
-        gsap.fromTo(closeTrigger, {
+        tlIn.fromTo(closeTrigger, {
           autoAlpha: 0,
           scale: 0.96,
           rotation: 0
@@ -46,12 +95,14 @@
           autoAlpha: 1,
           scale: 1,
           rotation: 0,
-          duration: 0.5,
-          delay: 0.12,
-          ease: 'power2.inOut'
-        });
+          duration: 0.95,
+          ease: 'power3.out'
+        }, 0.22);
       }
+      return;
     }
+
+    overlay.classList.remove('is-hidden');
   }
 
   function initOverlayHeadingAnimations() {
@@ -103,6 +154,7 @@
           overlay.style.removeProperty('pointer-events');
           overlay.style.removeProperty('opacity');
           document.body.classList.remove('mode-selector-open');
+          syncBodyScrollLock();
           isClosing = false;
         }
       });
@@ -160,6 +212,7 @@
     overlay.style.removeProperty('pointer-events');
     overlay.style.removeProperty('opacity');
     document.body.classList.remove('mode-selector-open');
+    syncBodyScrollLock();
     isClosing = false;
   }
 
