@@ -2037,7 +2037,7 @@ if (section) {
   var inner = section.querySelector('.home_agents');
   var elements = gsap.utils.toArray('.text, .title', section);
   var isMobile = window.matchMedia('(max-width: 801px)').matches;
-  var scrollDistance = window.innerHeight * (isMobile ? 1.1 : 1.3);
+  var scrollDistance = window.innerHeight * (isMobile ? 0.9 : 1.1);
   gsap.fromTo(section, {
     backgroundColor: '#ffffff',
     color: '#2C2F33'
