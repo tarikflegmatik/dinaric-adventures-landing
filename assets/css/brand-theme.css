@@ -154,6 +154,14 @@ html {
   object-fit: cover;
 }
 
+#about_featured .featured_background .featured-media-image {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: block;
+  object-fit: cover;
+}
+
 /* adventure-first: filters removed, so remove the reserved top gap above resort cards */
 .adventure-first-page.page-template-tmpl_accommodation #resort-list .grid-resorts-list {
   padding-top: 0;
