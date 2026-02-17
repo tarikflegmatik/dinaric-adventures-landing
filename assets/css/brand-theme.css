@@ -145,3 +145,11 @@ html {
     height: 56px;
   }
 }
+
+#home_featured .featured_background .featured-media-image {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: block;
+  object-fit: cover;
+}
