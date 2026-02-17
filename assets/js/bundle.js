@@ -1483,7 +1483,7 @@ var hideFloatRequest = function hideFloatRequest() {
             });
           }); // Force request button to stay hidden when section is in view
 
-          if (isActive) {
+          if (isActive && requestBtn) {
             gsap.to(requestBtn, {
               autoAlpha: 0,
               y: '100%',

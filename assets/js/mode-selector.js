@@ -10,6 +10,9 @@
   var closeTrigger = document.getElementById('mode-selector-close');
   var isClosing = false;
   var activeDirection = null;
+  var currentPath = (window.location && window.location.pathname ? window.location.pathname : '').replace(/\/+$/, '') || '/';
+  var isHomePath = currentPath === '/' || currentPath === '/index.html';
+  var shouldAutoStart = document.body.dataset.modeSelectorAutostart === 'true' || isHomePath;
   var BASE_ROTATION_OFFSET = -45;
   var ANGLE_TOP = BASE_ROTATION_OFFSET;
   var ANGLE_LEFT = BASE_ROTATION_OFFSET - 30;
@@ -28,6 +31,18 @@
   }
 
   window.syncBodyScrollLock = syncBodyScrollLock;
+
+  if (shouldAutoStart) {
+    document.body.classList.add('mode-selector-open');
+    overlay.classList.remove('is-hidden');
+    if (closeTrigger) {
+      closeTrigger.classList.add('is-active');
+    }
+  } else {
+    document.body.classList.remove('mode-selector-open');
+    overlay.classList.add('is-hidden');
+  }
+
   syncBodyScrollLock();
 
   function getCardEnterState(card, index) {

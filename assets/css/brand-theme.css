@@ -153,3 +153,8 @@ html {
   display: block;
   object-fit: cover;
 }
+
+/* adventure-first: filters removed, so remove the reserved top gap above resort cards */
+.adventure-first-page.page-template-tmpl_accommodation #resort-list .grid-resorts-list {
+  padding-top: 0;
+}
