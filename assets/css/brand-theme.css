@@ -162,6 +162,29 @@ html {
   object-fit: cover;
 }
 
+/* Override legacy drag cursor visual while preserving text behavior from JS */
+.cursor-follower {
+  width: 58px;
+  height: 58px;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 8.5px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.11em;
+  border-radius: 100vmax;
+  background: var(--brand-scrollbar-thumb);
+  border: 1px solid var(--brand-scrollbar-thumb);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 14px 34px rgba(9, 10, 13, 0.32);
+}
+
+@media (max-width: 1024px) {
+  .cursor-follower {
+    width: 50px;
+    height: 50px;
+    font-size: 7.5px;
+  }
+}
+
 /* adventure-first: filters removed, so remove the reserved top gap above resort cards */
 .adventure-first-page.page-template-tmpl_accommodation #resort-list .grid-resorts-list {
   padding-top: 0;
