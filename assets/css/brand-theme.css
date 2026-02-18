@@ -464,3 +464,33 @@ body.single-resort.custom-multi-day-template-default #multiday-itinerary .itiner
 .instagram-swiper .swiper-slide a img {
   object-fit: cover;
 }
+/* Match itinerary link CTA typography/spacing to legacy map button style (without marker icon) */
+#itinerary .accordion .accordion__item .accordion__inner .text-wrapper a.view-map-button {
+  all: unset;
+  cursor: pointer;
+}
+
+#itinerary .accordion .accordion__item .accordion__inner .text-wrapper a.view-map-button span.view-map {
+  color: #2c2f33;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-block: 50px;
+}
+
+@media (max-width: 1024px) {
+  #itinerary .accordion .accordion__item .accordion__inner .text-wrapper a.view-map-button span.view-map {
+    padding-block: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  #itinerary .accordion .accordion__item .accordion__inner .text-wrapper a.view-map-button span.view-map {
+    padding-block: 20px;
+  }
+}
