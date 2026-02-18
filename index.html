@@ -160,11 +160,46 @@ body.single-resort #ask-your-concierge[data-villas] {
 </head>
 
 <body data-mode-selector-autostart="true" class="home wp-singular page-template page-template-tmpl_home page-template-tmpl_home-php page page-id-1388 mode-selector-open mode-selector-forced">
+  <!-- Pre-paint mode bootstrap: must run inline before overlay markup to avoid first-load flicker when a saved/shared view exists. -->
+  <script>
+    (function () {
+      var key = 'view';
+      var validViews = ['adventure', 'discovery'];
+      var isValid = function (value) {
+        return validViews.indexOf(value) > -1;
+      };
+
+      try {
+        var queryView = null;
+        try {
+          queryView = new URLSearchParams(window.location.search).get(key);
+        } catch (error) {
+          queryView = null;
+        }
+        queryView = isValid(queryView) ? queryView : null;
+
+        var storedView = localStorage.getItem(key);
+        storedView = isValid(storedView) ? storedView : null;
+
+        var view = queryView || storedView;
+        if (view) {
+          if (queryView) {
+            localStorage.setItem(key, queryView);
+          }
+          document.body.classList.remove('mode-selector-open', 'mode-selector-forced');
+          document.body.classList.add('mode-selector-skip-autostart', 'view-' + view);
+          document.body.dataset.view = view;
+        }
+      } catch (error) {
+        /* localStorage may be unavailable in private/restricted contexts */
+      }
+    })();
+  </script>
   <div id="mode-selector-overlay" aria-label="Website mode selector">
     <section class="mode-selector-services">
       <div class="services_wrapper">
         <div class="service">
-          <a href="#placeholder" data-mode-option>
+          <a href="#placeholder" data-mode-option="adventure">
             <h2 data-animate-heading>
               ADVENTURE FIRST            <svg xmlns="http://www.w3.org/2000/svg" width="50.987" height="14.208" viewBox="0 0 50.987 14.208">
                 <g id="Group_2492" data-name="Group 2492" transform="translate(-1143 -7586.331)">
@@ -179,7 +214,7 @@ body.single-resort #ask-your-concierge[data-villas] {
           </a>
         </div>
         <div class="service">
-          <a href="#placeholder" data-mode-option>
+          <a href="#placeholder" data-mode-option="discovery">
             <h2 data-animate-heading>
               EASY GOING DISCOVERY            <svg xmlns="http://www.w3.org/2000/svg" width="50.987" height="14.208" viewBox="0 0 50.987 14.208">
                 <g id="Group_2492" data-name="Group 2492" transform="translate(-1143 -7586.331)">

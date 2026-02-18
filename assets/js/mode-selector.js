@@ -10,13 +10,66 @@
   var closeTrigger = document.getElementById('mode-selector-close');
   var isClosing = false;
   var activeDirection = null;
+  var VIEW_STORAGE_KEY = 'view';
+  var VALID_VIEWS = ['adventure', 'discovery'];
   var currentPath = (window.location && window.location.pathname ? window.location.pathname : '').replace(/\/+$/, '') || '/';
   var isHomePath = currentPath === '/' || currentPath === '/index.html';
-  var shouldAutoStart = document.body.dataset.modeSelectorAutostart === 'true' || isHomePath;
+  var selectedView = getBodyView() || getSelectedView();
+  var shouldAutoStart = (document.body.dataset.modeSelectorAutostart === 'true' || isHomePath) && !selectedView;
   var BASE_ROTATION_OFFSET = -45;
   var ANGLE_TOP = BASE_ROTATION_OFFSET;
   var ANGLE_LEFT = BASE_ROTATION_OFFSET - 30;
   var ANGLE_RIGHT = BASE_ROTATION_OFFSET + 30;
+
+  function isValidView(view) {
+    return VALID_VIEWS.indexOf(view) > -1;
+  }
+
+  function getSelectedView() {
+    try {
+      var storedView = localStorage.getItem(VIEW_STORAGE_KEY);
+      return isValidView(storedView) ? storedView : null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function getBodyView() {
+    var view = document.body.dataset.view;
+    return isValidView(view) ? view : null;
+  }
+
+  function setUrlView(view) {
+    if (!isValidView(view)) return;
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.set(VIEW_STORAGE_KEY, view);
+      window.history.replaceState({}, '', url.toString());
+    } catch (error) {
+      return;
+    }
+  }
+
+  function setSelectedView(view) {
+    if (!isValidView(view)) return;
+    try {
+      localStorage.setItem(VIEW_STORAGE_KEY, view);
+    } catch (error) {
+      return;
+    }
+  }
+
+  function applyView(view) {
+    if (!isValidView(view)) return;
+    document.body.dataset.view = view;
+    document.body.classList.remove('view-adventure', 'view-discovery');
+    document.body.classList.add('view-' + view);
+  }
+
+  if (selectedView) {
+    setSelectedView(selectedView);
+    applyView(selectedView);
+  }
 
   function setForcedModeState(isForced) {
     document.body.classList.toggle('mode-selector-forced', !!isForced);
@@ -65,6 +118,7 @@
 
   function openModeSelector() {
     isClosing = false;
+    document.body.classList.remove('mode-selector-skip-autostart');
     setForcedModeState(false);
     if (closeTrigger) {
       closeTrigger.classList.add('is-active');
@@ -294,6 +348,12 @@
 
     card.addEventListener('click', function (event) {
       event.preventDefault();
+      var view = card.getAttribute('data-mode-option');
+      if (isValidView(view)) {
+        setSelectedView(view);
+        applyView(view);
+        setUrlView(view);
+      }
       var direction = activeDirection || resolveCardDirection();
       closeModeSelector(direction);
     });
