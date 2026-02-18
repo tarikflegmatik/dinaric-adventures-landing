@@ -162,6 +162,15 @@ html {
   object-fit: cover;
 }
 
+/* about-us: seam-first alignment for split hero halves */
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_featured_div .image_top {
+  background-position: 50% 100% !important;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_featured_div .image_bottom {
+  background-position: 50% 0% !important;
+}
+
 /* Override legacy drag cursor visual while preserving text behavior from JS */
 .cursor-follower {
   width: 58px;
