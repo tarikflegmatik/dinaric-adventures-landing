@@ -171,6 +171,159 @@ body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_featured
   background-position: 50% 0% !important;
 }
 
+/* about-us: team card caption styling migrated from page inline overrides */
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team-media {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team-media::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40%;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(44, 47, 51, 0.64) 0%, rgba(44, 47, 51, 0.2) 52%, rgba(44, 47, 51, 0) 100%);
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team_left img,
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team_right img {
+  filter: grayscale(30%) contrast(1.12) brightness(0.88);
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team-caption {
+  position: absolute !important;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team-caption .team-role {
+  margin: 0;
+  position: absolute;
+  left: 24px;
+  right: auto;
+  bottom: 62px;
+  color: #e6e2d8;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: clamp(18px, 1.9vw, 28px);
+  line-height: 0.9;
+  text-align: left;
+  mix-blend-mode: difference;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team-caption h3 {
+  margin: 0 !important;
+  padding-top: 0 !important;
+  position: absolute;
+  left: 14px;
+  right: -78px;
+  bottom: -26px;
+  color: #e6e2d8;
+  text-transform: uppercase;
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  font-size: clamp(42px, 5vw, 72px);
+  text-align: left;
+  background: linear-gradient(180deg, #b07a3f 0%, #b07a3f calc(100% - 32px), #e6e2d8 calc(100% - 32px), #e6e2d8 100%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  mix-blend-mode: difference;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .text {
+  max-width: 36ch;
+  margin: 56px auto 0;
+  text-align: left;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .text .team-description {
+  margin: 0;
+  line-height: 1.7;
+  text-align: left;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .text .team-tags {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .text .team-tags .tag {
+  border: 1px solid rgba(230, 226, 216, 0.55);
+  padding: 6px 12px;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .text .team-tags .tag p {
+  margin: 0;
+  color: #e6e2d8;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview + .team_overview {
+  margin-top: 48px;
+}
+
+@media (min-width: 901px) {
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team_right {
+    margin-top: clamp(20px, 6vh, 72px);
+  }
+}
+
+@media (max-width: 768px) {
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team-caption {
+    inset: 0;
+  }
+
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team-caption h3 {
+    left: 10px;
+    right: -34px;
+    bottom: -16px;
+    font-size: clamp(34px, 9vw, 50px);
+    line-height: 0.9;
+    background: linear-gradient(180deg, #b07a3f 0%, #b07a3f calc(100% - 20px), #e6e2d8 calc(100% - 20px), #e6e2d8 100%);
+  }
+
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team-caption .team-role {
+    left: 18px;
+    right: auto;
+    bottom: 40px;
+    font-size: clamp(12px, 3.2vw, 16px);
+    letter-spacing: 0.07em;
+  }
+
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .text .team-tags {
+    margin-top: 14px;
+    gap: 10px;
+  }
+
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .text .team-tags .tag {
+    padding: 5px 10px;
+  }
+
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .text .team-tags .tag p {
+    font-size: 10px;
+  }
+
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview + .team_overview {
+    margin-top: 40px;
+  }
+
+  body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_about .team_overview .team_right {
+    margin-top: 0;
+  }
+}
+
 /* Override legacy drag cursor visual while preserving text behavior from JS */
 .cursor-follower {
   width: 145px;
