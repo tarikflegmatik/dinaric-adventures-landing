@@ -7522,6 +7522,7 @@ document.addEventListener('close', handleDialogClose, true); // function closeAl
 
 $("[data-component='accordion']").each(function () {
   var $accordion = $(this);
+  var isSingleOpen = $accordion.attr('data-accordion-single') === 'true';
   $accordion.find('[data-accordion-header]').on('click', function (e) {
     var $item = $(this).closest('[data-accordion-item]');
     var $cross = $item.find('.arrow');
@@ -7529,6 +7530,12 @@ $("[data-component='accordion']").each(function () {
     var $header = $(this);
 
     if ($inner.is(':hidden')) {
+      if (isSingleOpen) {
+        var $otherItems = $accordion.find('[data-accordion-item]').not($item);
+        $otherItems.find('[data-accordion-inner]').stop(true, true).slideUp('slow');
+        $otherItems.find('.arrow').removeClass('rotate');
+        $otherItems.find('[data-accordion-header]').removeClass('active');
+      }
       $inner.slideDown('slow');
       $cross.addClass('rotate');
       $header.addClass('active');
