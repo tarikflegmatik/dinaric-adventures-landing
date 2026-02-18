@@ -402,3 +402,19 @@ body.single-resort.custom-multi-day-template-default #multiday-itinerary .itiner
     padding-right: var(--_padding);
   }
 }
+
+/* global: normalize instagram cards across all instagram-swiper usages */
+.instagram-swiper .swiper-slide {
+  aspect-ratio: 4 / 5 !important;
+  height: auto !important;
+}
+
+.instagram-swiper .swiper-slide a,
+.instagram-swiper .swiper-slide a img {
+  width: 100%;
+  height: 100%;
+}
+
+.instagram-swiper .swiper-slide a img {
+  object-fit: cover;
+}
