@@ -405,41 +405,77 @@ ready(function () {
   document.body.appendChild(cursorDiv);
   var cursor = document.querySelector('.cursor-follower');
   if (isTouchDevice) return;
-  window.addEventListener('mousemove', function (e) {
-    var target = e.target,
-        x = e.x,
-        y = e.y;
+  var cursorOffset = 60;
+  var pointerX = 0;
+  var pointerY = 0;
+  var currentCursorTarget = null;
+  var isDragActive = false;
+
+  var updateCursorLabel = function updateCursorLabel() {
+    if (!currentCursorTarget) {
+      cursorDiv.textContent = '';
+      return;
+    }
+
+    var idleText = currentCursorTarget.getAttribute('data-cursor-text') || 'DRAG';
+    var activeText = currentCursorTarget.getAttribute('data-cursor-active-text') || 'RELEASE';
+    cursorDiv.textContent = isDragActive ? activeText : idleText;
+  };
+
+  var moveCursor = function moveCursor(isVisible) {
+    gsap.to(cursor, {
+      x: pointerX + cursorOffset,
+      y: pointerY + cursorOffset,
+      duration: isDragActive ? 0.08 : 0.22,
+      ease: 'power2.out',
+      opacity: isVisible ? 1 : 0,
+      scale: isVisible ? 1 : 0.4,
+      overwrite: 'auto'
+    });
+  };
+
+  var resolveCursorTarget = function resolveCursorTarget(target) {
+    if (isDragActive) return;
     var cursorTarget = target.closest('[data-cursor-target]');
     var isTargetOnLink = target.closest('a:not([data-fancybox], .clickable-parent-heading > a)');
+    currentCursorTarget = cursorTarget && !isTargetOnLink ? cursorTarget : null;
+    updateCursorLabel();
+  };
 
-    if (cursorTarget && !isTargetOnLink) {
-      var cursorText = cursorTarget.getAttribute('data-cursor-text') || 'DRAG';
-      cursorDiv.textContent = cursorText;
-      gsap.to(cursor, {
-        x: x + 60,
-        y: y + 60,
-        duration: 0.5,
-        ease: 'power2',
-        opacity: 1,
-        scale: 2.5
-      });
-    } else {
-      gsap.to(cursor, {
-        x: x + 60,
-        y: y + 60,
-        duration: 0.5,
-        ease: 'power2',
-        opacity: 0,
-        scale: 1
-      });
-    }
+  window.addEventListener('pointermove', function (e) {
+    pointerX = e.clientX;
+    pointerY = e.clientY;
+    resolveCursorTarget(e.target);
+    moveCursor(Boolean(currentCursorTarget));
+  });
+  window.addEventListener('pointerdown', function (e) {
+    if (!currentCursorTarget) return;
+    pointerX = e.clientX;
+    pointerY = e.clientY;
+    isDragActive = true;
+    updateCursorLabel();
+    moveCursor(true);
+  });
+
+  var resetDragState = function resetDragState() {
+    if (!isDragActive) return;
+    isDragActive = false;
+    updateCursorLabel();
+  };
+
+  window.addEventListener('pointerup', resetDragState);
+  window.addEventListener('pointercancel', resetDragState);
+  window.addEventListener('blur', function () {
+    resetDragState();
+    currentCursorTarget = null;
+    updateCursorLabel();
+    moveCursor(false);
   });
   document.addEventListener('mouseleave', function () {
-    gsap.to(cursor, {
-      duration: 0.5,
-      opacity: 0,
-      scale: 0
-    });
+    resetDragState();
+    currentCursorTarget = null;
+    updateCursorLabel();
+    moveCursor(false);
   });
 });
 ready(function () {

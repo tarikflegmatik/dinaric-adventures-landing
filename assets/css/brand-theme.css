@@ -173,13 +173,15 @@ body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_featured
 
 /* Override legacy drag cursor visual while preserving text behavior from JS */
 .cursor-follower {
-  width: 58px;
-  height: 58px;
+  width: 145px;
+  height: 145px;
   color: rgba(255, 255, 255, 0.96);
-  font-size: 8.5px;
+  font-size: 21px;
   font-family: "Satoshi", sans-serif;
   font-weight: 400;
   letter-spacing: 0.11em;
+  transform-origin: center;
+  will-change: transform, opacity;
   border-radius: 100vmax;
   background: var(--brand-scrollbar-thumb);
   border: 1px solid var(--brand-scrollbar-thumb);
@@ -188,9 +190,9 @@ body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_featured
 
 @media (max-width: 1024px) {
   .cursor-follower {
-    width: 50px;
-    height: 50px;
-    font-size: 7.5px;
+    width: 125px;
+    height: 125px;
+    font-size: 19px;
   }
 }
 
