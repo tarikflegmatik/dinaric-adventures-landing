@@ -29,6 +29,52 @@ footer .footer_wrapper .footer-bottom-wrapper {
   border-top: none;
 }
 
+/* Social icon rendering for menu/footer links while preserving existing link hover/color behavior. */
+.menu-socials a.link[data-social-text],
+footer .socials a.link[data-social-text] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.menu-socials .social-icon,
+footer .socials .social-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  color: inherit;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+}
+
+.menu-socials .social-icon-instagram,
+footer .socials .social-icon-instagram {
+  mask-image: url("../images/instagram.svg");
+  -webkit-mask-image: url("../images/instagram.svg");
+}
+
+.menu-socials .social-icon-linkedin,
+footer .socials .social-icon-linkedin {
+  mask-image: url("../images/linkedin.svg");
+  -webkit-mask-image: url("../images/linkedin.svg");
+}
+
+/* Icon-only social links: disable text underline animation pseudo-elements. */
+.menu-socials a.link[data-social-text]::before,
+.menu-socials a.link[data-social-text]::after,
+footer .socials a.link[data-social-text]::before,
+footer .socials a.link[data-social-text]::after {
+  content: none;
+}
+
 /* Rebrand typography baseline (without global !important overrides). */
 body,
 button,
