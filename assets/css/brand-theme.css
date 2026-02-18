@@ -381,3 +381,15 @@ body.single-resort.custom-multi-day-template-default #multiday-highlights .image
     top: -42%;
   }
 }
+
+/* extreme-canyoning: remove itinerary map column and let content occupy full row */
+body.single-resort.custom-multi-day-template-default #multiday-itinerary .itinerary-content {
+  width: 100%;
+  padding-right: var(--_padding);
+}
+
+@media (max-width: 1280px) {
+  body.single-resort.custom-multi-day-template-default #multiday-itinerary .itinerary-content {
+    padding-right: var(--_padding);
+  }
+}
