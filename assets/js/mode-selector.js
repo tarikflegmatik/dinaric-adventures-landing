@@ -18,6 +18,10 @@
   var ANGLE_LEFT = BASE_ROTATION_OFFSET - 30;
   var ANGLE_RIGHT = BASE_ROTATION_OFFSET + 30;
 
+  function setForcedModeState(isForced) {
+    document.body.classList.toggle('mode-selector-forced', !!isForced);
+  }
+
   function syncBodyScrollLock() {
     var isModeSelectorOpen = document.body.classList.contains('mode-selector-open');
     var isMainMenuOpen = !!document.querySelector('.headermenu.is-active');
@@ -38,9 +42,11 @@
     if (closeTrigger) {
       closeTrigger.classList.add('is-active');
     }
+    setForcedModeState(true);
   } else {
     document.body.classList.remove('mode-selector-open');
     overlay.classList.add('is-hidden');
+    setForcedModeState(false);
   }
 
   syncBodyScrollLock();
@@ -59,6 +65,7 @@
 
   function openModeSelector() {
     isClosing = false;
+    setForcedModeState(false);
     if (closeTrigger) {
       closeTrigger.classList.add('is-active');
     }
@@ -170,6 +177,7 @@
           overlay.style.removeProperty('visibility');
           overlay.style.removeProperty('pointer-events');
           overlay.style.removeProperty('opacity');
+          setForcedModeState(false);
           document.body.classList.remove('mode-selector-open');
           syncBodyScrollLock();
           isClosing = false;
@@ -228,6 +236,7 @@
     overlay.style.removeProperty('visibility');
     overlay.style.removeProperty('pointer-events');
     overlay.style.removeProperty('opacity');
+    setForcedModeState(false);
     document.body.classList.remove('mode-selector-open');
     syncBodyScrollLock();
     isClosing = false;
