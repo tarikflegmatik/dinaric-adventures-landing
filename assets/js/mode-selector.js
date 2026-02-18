@@ -83,7 +83,8 @@
       });
       if (compass) {
         gsap.set(compass, {
-          rotation: ANGLE_TOP
+          rotation: ANGLE_TOP,
+          scale: 1
         });
       }
       var tlIn = gsap.timeline();
@@ -150,7 +151,8 @@
   if (window.gsap) {
     if (compass) {
       gsap.set(compass, {
-        rotation: ANGLE_TOP
+        rotation: ANGLE_TOP,
+        scale: 1
       });
     }
   }
@@ -245,6 +247,7 @@
         gsap.to(compass, {
           duration: 0.28,
           rotation: activeDirection === 'left' ? ANGLE_LEFT : ANGLE_RIGHT,
+          scale: 1.04,
           ease: 'power2.out',
           overwrite: true
         });
@@ -260,6 +263,7 @@
         gsap.to(compass, {
           duration: 0.22,
           rotation: ANGLE_TOP,
+          scale: 1,
           ease: 'power2.out',
           overwrite: true
         });
@@ -272,6 +276,7 @@
         gsap.to(compass, {
           duration: 0.22,
           rotation: ANGLE_TOP,
+          scale: 1,
           ease: 'power2.out',
           overwrite: true
         });
