@@ -20,6 +20,15 @@
   --brand-scrollbar-track: transparent;
 }
 
+/* Global footer cleanup: remove top/bottom separator lines around footer sections. */
+footer .footer_wrapper .footer-banner-wrapper .marquee-container {
+  border-bottom: none;
+}
+
+footer .footer_wrapper .footer-bottom-wrapper {
+  border-top: none;
+}
+
 /* Rebrand typography baseline (without global !important overrides). */
 body,
 button,
