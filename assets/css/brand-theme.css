@@ -353,3 +353,31 @@ body.page-template-tmpl_about #whoweare_about .whoweare_about .whoweare_team_abo
 .adventure-first-page.page-template-tmpl_accommodation #resort-list .grid-resorts-list {
   padding-top: 0;
 }
+
+/* extreme-canyoning: raise and scale left floating image to reduce dead space in highlights */
+body.single-resort.custom-multi-day-template-default #multiday-highlights .image-wrapper-left .image_left_floating {
+  width: 66%;
+  top: -120%;
+  right: clamp(6px, 1.2vw, 24px);
+  z-index: 2;
+}
+
+@media (min-width: 1281px) and (max-width: 1600px) {
+  body.single-resort.custom-multi-day-template-default #multiday-highlights .image-wrapper-left .image_left_floating {
+    top: -108%;
+  }
+}
+
+@media (max-width: 1280px) {
+  body.single-resort.custom-multi-day-template-default #multiday-highlights .image-wrapper-left .image_left_floating {
+    width: 58%;
+    top: -82%;
+  }
+}
+
+@media (max-width: 768px) {
+  body.single-resort.custom-multi-day-template-default #multiday-highlights .image-wrapper-left .image_left_floating {
+    width: 50%;
+    top: -42%;
+  }
+}
