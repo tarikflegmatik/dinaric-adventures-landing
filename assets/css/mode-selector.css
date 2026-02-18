@@ -28,7 +28,7 @@ body:not(.mode-selector-open) .site-header .header_right {
 #mode-selector-overlay {
   position: fixed;
   inset: 0;
-  z-index: 3;
+  z-index: 12;
   background-color: #2C2F33;
   opacity: 1;
   visibility: visible;
@@ -48,6 +48,8 @@ body.mode-selector-open .site-header {
 
 #mode-selector-overlay .mode-selector-services {
   background-color: #2C2F33;
+  position: relative;
+  z-index: 1;
 }
 
 #mode-selector-overlay .mode-selector-services .services_wrapper {
@@ -220,7 +222,7 @@ body.mode-selector-open .site-header {
   position: absolute;
   top: clamp(24px, 3.2vh, 48px);
   right: clamp(24px, 3vw, 56px);
-  z-index: 12;
+  z-index: 20;
   width: 80px;
   aspect-ratio: 1;
   border: 0;
@@ -232,6 +234,7 @@ body.mode-selector-open .site-header {
   cursor: pointer;
   user-select: none;
   touch-action: manipulation;
+  pointer-events: auto;
 }
 
 body.mode-selector-forced #mode-selector-overlay .mode-selector-close {
