@@ -20,7 +20,7 @@ body:not(.mode-selector-open) .site-header .header_right {
 #mode-selector-overlay {
   position: fixed;
   inset: 0;
-  z-index: 10000;
+  z-index: 3;
   background-color: #2C2F33;
   opacity: 1;
   visibility: visible;
