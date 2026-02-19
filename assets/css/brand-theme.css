@@ -75,6 +75,243 @@ footer .socials a.link[data-social-text]::after {
   content: none;
 }
 
+/* articles: asymmetric travel-journal hero collage (left side simplified, right side retained). */
+#travel-stories-featured .images-container .gallery-left img:nth-of-type(1) {
+  left: -2%;
+  top: 18%;
+  max-width: 54%;
+  max-height: 54%;
+  width: 420px;
+  transform: rotate(-1.5deg);
+}
+
+#travel-stories-featured .images-container .gallery-left img:nth-of-type(2) {
+  left: 58%;
+  top: 8%;
+  max-width: 28%;
+  width: 180px;
+  transform: rotate(2deg);
+}
+
+#travel-stories-featured .images-container .gallery-left img:nth-of-type(3) {
+  left: 10%;
+  top: 68%;
+  max-width: 26%;
+  width: 170px;
+  transform: rotate(-2.5deg);
+}
+
+#travel-stories-featured .images-container .gallery-left img:nth-of-type(4) {
+  left: 34%;
+  top: 42%;
+  max-width: 50%;
+  max-height: 50%;
+  width: 360px;
+  transform: rotate(1deg);
+}
+
+@media (max-width: 768px) {
+  #travel-stories-featured .images-container .gallery-left {
+    width: 50%;
+    height: 60%;
+    margin-inline: auto;
+  }
+}
+
+#featured-stories .category-filters {
+  margin-bottom: 64px;
+}
+
+#featured-stories .category-filters .categories {
+  justify-content: center;
+}
+
+#featured-stories > .subtitle {
+  color: var(--brand-accent);
+  font-size: 25px;
+  line-height: normal;
+  font-weight: 500;
+  display: block;
+  width: fit-content;
+  margin: 0 auto 8px;
+}
+
+#featured-stories > .title {
+  margin: 0 0 72px;
+  text-align: center;
+  font-size: clamp(48px, 5.6vw, 92px);
+  line-height: 0.94;
+}
+
+/* articles: featured-stories slider overrides (replaces static 3-col grid). */
+#featured-stories .stories-grid.swiper {
+  display: block;
+}
+
+#featured-stories .stories-grid .swiper-wrapper {
+  align-items: stretch;
+}
+
+#featured-stories .stories-grid .featured-story {
+  height: 700px;
+}
+
+#featured-stories .featured-stories-pagination {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+#featured-stories .featured-stories-pagination__status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#featured-stories .featured-stories-pagination__counter {
+  min-width: 64px;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--brand-text-dark);
+}
+
+#featured-stories .featured-stories-pagination__bar {
+  width: min(300px, 42vw);
+  height: 3px;
+  background: color-mix(in srgb, var(--brand-text-dark) 20%, transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+#featured-stories .featured-stories-pagination__fill {
+  height: 100%;
+  width: 0%;
+  background: var(--brand-scrollbar-thumb);
+  transition: width 0.35s ease;
+}
+
+#featured-stories .featured-stories-pagination__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#featured-stories .featured-stories-pagination__btn {
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 999px;
+  background: var(--brand-scrollbar-thumb);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+#featured-stories .featured-stories-pagination__btn:hover {
+  transform: scale(0.95);
+  background: var(--brand-scrollbar-thumb-hover);
+}
+
+#featured-stories .featured-stories-pagination__btn.swiper-button-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#featured-stories .featured-stories-pagination__btn span {
+  font-size: 22px;
+  line-height: 1;
+}
+
+#featured-stories {
+  position: relative;
+  margin-block: 70px 140px;
+}
+
+@media (max-width: 1024px) {
+  #featured-stories > .subtitle {
+    font-size: 20px;
+  }
+
+  #featured-stories > .title {
+    margin-bottom: 56px;
+    font-size: clamp(42px, 6.8vw, 76px);
+  }
+
+  #featured-stories .stories-grid .featured-story {
+    height: 620px;
+  }
+
+  #featured-stories .category-filters {
+    margin-bottom: 46px;
+  }
+
+  #featured-stories {
+    margin-block: 70px 110px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  #featured-stories > .subtitle {
+    font-size: 18px;
+  }
+
+  #featured-stories > .title {
+    margin-bottom: 44px;
+    font-size: clamp(42px, 10vw, 74px);
+    text-align: center;
+  }
+
+  #featured-stories .category-filters {
+    margin-bottom: 34px;
+  }
+
+  #featured-stories .stories-grid .featured-story {
+    height: 460px;
+  }
+
+  #featured-stories .featured-stories-pagination {
+    margin-top: 20px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #featured-stories {
+    margin-block: 60px 90px;
+  }
+
+  #featured-stories .featured-stories-pagination__counter {
+    min-width: 56px;
+    font-size: 15px;
+  }
+
+  #featured-stories .featured-stories-pagination__status {
+    gap: 12px;
+  }
+
+  #featured-stories .featured-stories-pagination__bar {
+    width: min(220px, 52vw);
+  }
+
+  #featured-stories .featured-stories-pagination__btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* articles: keep signature-editor marquee text on brand palette (replace off-palette gray). */
+#signature-editor .bottom-wrapper p {
+  color: var(--brand-accent);
+}
+
 /* Rebrand typography baseline (without global !important overrides). */
 body,
 button,

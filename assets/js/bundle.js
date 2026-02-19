@@ -438,7 +438,8 @@ ready(function () {
     if (isDragActive) return;
     var cursorTarget = target.closest('[data-cursor-target]');
     var isTargetOnLink = target.closest('a:not([data-fancybox], .clickable-parent-heading > a)');
-    currentCursorTarget = cursorTarget && !isTargetOnLink ? cursorTarget : null;
+    var allowLinks = cursorTarget && cursorTarget.hasAttribute('data-cursor-allow-links');
+    currentCursorTarget = cursorTarget && (!isTargetOnLink || allowLinks) ? cursorTarget : null;
     updateCursorLabel();
   };
 
@@ -7748,6 +7749,52 @@ new Swiper('.instagram-swiper', {
     }
   }
 }); // select all a tags with class has-children inside #featured-stories .filters. When clicked, prevent default, and add toggle class active to their sibling ul element
+
+var featuredStoriesSwiperElement = document.querySelector('.featured-stories-swiper');
+
+if (featuredStoriesSwiperElement) {
+  var featuredCounter = document.querySelector('#featured-stories .featured-stories-pagination__counter');
+  var featuredFill = document.querySelector('#featured-stories .featured-stories-pagination__fill');
+
+  var updateFeaturedPagination = function updateFeaturedPagination(swiper) {
+    if (!featuredCounter || !featuredFill) return;
+    var totalPages = Math.max(swiper.snapGrid.length, 1);
+    var currentPage = Math.min(swiper.snapIndex + 1, totalPages);
+    featuredCounter.textContent = "".concat(String(currentPage).padStart(2, '0'), " / ").concat(String(totalPages).padStart(2, '0'));
+    featuredFill.style.width = "".concat(currentPage / totalPages * 100, "%");
+  };
+
+  new Swiper(featuredStoriesSwiperElement, {
+    loop: false,
+    watchOverflow: false,
+    grabCursor: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    speed: 1200,
+    navigation: {
+      prevEl: '#featured-stories .featured-stories-button-prev',
+      nextEl: '#featured-stories .featured-stories-button-next'
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30
+      },
+      1200: {
+        slidesPerView: 3.2,
+        spaceBetween: 30
+      }
+    },
+    on: {
+      init: function init(swiper) {
+        updateFeaturedPagination(swiper);
+      },
+      slideChange: function slideChange(swiper) {
+        updateFeaturedPagination(swiper);
+      }
+    }
+  });
+}
 
 document.querySelectorAll('.category-filters a.has-children').forEach(function (el) {
   el.addEventListener('click', function (e) {
