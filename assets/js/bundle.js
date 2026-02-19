@@ -7768,8 +7768,10 @@ if (featuredStoriesSwiperElement) {
     loop: false,
     watchOverflow: false,
     grabCursor: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
+    observer: true,
+    observeParents: true,
+    slidesPerView: 1.15,
+    spaceBetween: 16,
     speed: 1200,
     navigation: {
       prevEl: '#featured-stories .featured-stories-button-prev',
@@ -7777,8 +7779,8 @@ if (featuredStoriesSwiperElement) {
     },
     breakpoints: {
       768: {
-        slidesPerView: 2,
-        spaceBetween: 30
+        slidesPerView: 2.1,
+        spaceBetween: 24
       },
       1200: {
         slidesPerView: 3.2,
