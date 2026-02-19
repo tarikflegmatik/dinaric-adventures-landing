@@ -182,6 +182,55 @@
     overlay.classList.remove('is-hidden');
   }
 
+  function isMainMenuOpen() {
+    return !!document.querySelector('.headermenu.is-active');
+  }
+
+  function closeMainMenuThenOpen() {
+    if (!isMainMenuOpen()) {
+      openModeSelector();
+      return;
+    }
+
+    // Reuse existing menu toggle logic so internal menu state stays in sync.
+    var activeMenuButton = document.querySelector('.menu_button.is-active');
+    var menuButton = activeMenuButton || document.querySelector('.menu_button');
+
+    if (menuButton) {
+      menuButton.click();
+      // Wait for the menu to actually close before opening the selector to avoid overlay/menu race conditions.
+      var startTime = Date.now();
+      var maxWaitMs = 1500;
+      var checkIntervalMs = 50;
+      var waitForMenuClose = function () {
+        if (!isMainMenuOpen() || Date.now() - startTime >= maxWaitMs) {
+          openModeSelector();
+          return;
+        }
+        setTimeout(waitForMenuClose, checkIntervalMs);
+      };
+      waitForMenuClose();
+      return;
+    }
+
+    // Defensive fallback if menu button is unexpectedly missing.
+    document.querySelectorAll('.headermenu').forEach(function (menu) {
+      menu.classList.remove('is-active');
+      if (window.gsap) {
+        gsap.set(menu, { y: '100%' });
+      }
+    });
+    document.querySelectorAll('.menu_button').forEach(function (button) {
+      button.classList.remove('is-active');
+    });
+    var siteHeader = document.querySelector('.site-header');
+    if (siteHeader) {
+      siteHeader.classList.remove('openmenu');
+    }
+    syncBodyScrollLock();
+    requestAnimationFrame(openModeSelector);
+  }
+
   function initOverlayHeadingAnimations() {
     var overlayHeadings = overlay.querySelectorAll('[data-animate-heading]');
     if (!overlayHeadings.length || !window.gsap || !window.SplitText) return;
@@ -362,7 +411,8 @@
   if (openTrigger) {
     openTrigger.addEventListener('click', function (event) {
       event.preventDefault();
-      openModeSelector();
+      event.stopPropagation();
+      closeMainMenuThenOpen();
     });
   }
 
