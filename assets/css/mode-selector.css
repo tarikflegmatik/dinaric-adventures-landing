@@ -186,8 +186,8 @@ body.mode-selector-open .site-header {
   top: 57%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(64px, 4.8vw, 82px);
-  height: clamp(64px, 4.8vw, 82px);
+  width: clamp(126px, 9vw, 166px);
+  height: clamp(126px, 9vw, 166px);
   z-index: 10;
   pointer-events: none;
   display: flex;
@@ -216,16 +216,16 @@ body.mode-selector-open .site-header {
 @media (max-width: 1024px) {
   #mode-selector-overlay .mode-selector-compass {
     top: 57%;
-    width: 62px;
-    height: 62px;
+    width: 108px;
+    height: 108px;
   }
 }
 
 @media (max-width: 768px) {
   #mode-selector-overlay .mode-selector-compass {
     top: 56%;
-    width: 54px;
-    height: 54px;
+    width: 92px;
+    height: 92px;
   }
 }
 
