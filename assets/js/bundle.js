@@ -803,26 +803,33 @@ ready(function () {
 ready(function () {
   var timelessSection = document.querySelector('#timeless');
   if (!timelessSection) return;
+  if (timelessSection.dataset.disableTimelessAnimation === 'true') return;
   var innerTimeless = timelessSection.querySelector('.timeless');
   var innerLyrical = timelessSection.querySelector('#lyrical');
   gsap.registerPlugin(ScrollTrigger);
 
   var timelessSectionAnimation = function timelessSectionAnimation() {
     var timeliness = gsap.timeline();
-    gsap.set([innerLyrical], {
-      y: '100%',
-      opacity: 0
-    });
-    timeliness.to(innerTimeless, {
-      delay: 0.2,
-      x: '100%',
-      opacity: 0,
-      zIndex: -1
-    }, 0);
-    timeliness.to([innerLyrical], {
-      y: 0,
-      opacity: 1
-    }, 0.5);
+    if (innerLyrical) {
+      gsap.set([innerLyrical], {
+        y: '100%',
+        opacity: 0
+      });
+    }
+    if (innerTimeless) {
+      timeliness.to(innerTimeless, {
+        delay: 0.2,
+        x: '100%',
+        opacity: 0,
+        zIndex: -1
+      }, 0);
+    }
+    if (innerLyrical) {
+      timeliness.to([innerLyrical], {
+        y: 0,
+        opacity: 1
+      }, 0.5);
+    }
     return timeliness;
   };
 
