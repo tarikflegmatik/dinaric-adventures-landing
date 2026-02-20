@@ -101,7 +101,12 @@ body.mode-selector-open .site-header {
 @media (min-width: 768px) and (hover: hover) {
   #mode-selector-overlay .mode-selector-services .services_wrapper .service a:hover img {
     clip-path: inset(0% 0% 0% 0%);
-    filter: grayscale(85%) contrast(1.08);
+    filter: grayscale(0%) contrast(1.05);
+  }
+
+  #mode-selector-overlay .mode-selector-services .services_wrapper .service a:focus-visible img {
+    clip-path: inset(0% 0% 0% 0%);
+    filter: grayscale(0%) contrast(1.05);
   }
 
   #mode-selector-overlay .mode-selector-services .services_wrapper .service a:hover h2 {
