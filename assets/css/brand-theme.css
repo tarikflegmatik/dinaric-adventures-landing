@@ -29,6 +29,36 @@ footer .footer_wrapper .footer-bottom-wrapper {
   border-top: none;
 }
 
+footer .footer_wrapper .footer-bottom-wrapper .footer_bottom .footer-bottom-lime {
+  display: flex;
+  align-items: center;
+}
+
+footer .footer_wrapper .footer-bottom-wrapper .footer_bottom .footer-bottom-lime .agency-signature {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.92;
+  transition: opacity 0.25s ease;
+}
+
+footer .footer_wrapper .footer-bottom-wrapper .footer_bottom .footer-bottom-lime .agency-signature:hover {
+  opacity: 1;
+}
+
+footer .footer_wrapper .footer-bottom-wrapper .footer_bottom .footer-bottom-lime .agency-signature img {
+  display: block;
+  height: 18px;
+  width: auto;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  footer .footer_wrapper .footer-bottom-wrapper .footer_bottom .footer-bottom-lime .agency-signature img {
+    height: 16px;
+  }
+}
+
 /* Social icon rendering for menu/footer links while preserving existing link hover/color behavior. */
 .menu-socials a.link[data-social-text],
 footer .socials a.link[data-social-text] {
