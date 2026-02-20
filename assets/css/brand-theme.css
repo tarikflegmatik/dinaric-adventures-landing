@@ -685,6 +685,11 @@ body.single-resort.custom-multi-day-template-default #multiday-itinerary .itiner
   padding-right: var(--_padding);
 }
 
+/* extreme-canyoning: remove itinerary section bottom gap */
+body.single-resort.villa-resort.postid-1672 #multiday-itinerary {
+  margin-bottom: 0;
+}
+
 @media (max-width: 1280px) {
   body.single-resort.custom-multi-day-template-default #multiday-itinerary .itinerary-content {
     padding-right: var(--_padding);
