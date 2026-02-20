@@ -706,3 +706,69 @@ body.single-resort.custom-multi-day-template-default #multiday-itinerary .itiner
     padding-block: 20px;
   }
 }
+
+/* extreme-canyoning: apply missing destination FAQ styles without adding single-destination to body */
+body.single-custom-multi-day #faq-content {
+  padding-block: 140px 160px;
+}
+
+body.single-custom-multi-day #faq-content .wrapper {
+  padding: 0 8.5%;
+  place-items: center;
+}
+
+body.single-custom-multi-day #faq-content .wrapper .btn.btn-gold {
+  margin-block-start: 140px;
+  margin-inline: auto;
+}
+
+body.single-custom-multi-day #faq-content .faq-wrapper {
+  width: 100%;
+  padding-top: 100px;
+}
+
+body.single-custom-multi-day #faq-content .faq-wrapper [data-accordion-inner],
+body.single-custom-multi-day #faq-content .faq-wrapper [data-accordion-header] {
+  padding: 0;
+}
+
+body.single-custom-multi-day #faq-content .faq-wrapper .faq-link .text-heading {
+  font-family: "Satoshi", sans-serif;
+  font-size: 35px;
+}
+
+body.single-custom-multi-day #faq-content .faq-wrapper .faq-link .faq-answer-wrapper p {
+  max-width: 55ch;
+  font-size: 22px;
+}
+
+@media (max-width: 1440px) {
+  body.single-custom-multi-day #faq-content .faq-wrapper .faq-link .text-heading {
+    font-size: 28px;
+  }
+
+  body.single-custom-multi-day #faq-content .faq-wrapper .faq-link .faq-answer-wrapper p {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  body.single-custom-multi-day #faq-content .wrapper {
+    padding: 0 5.5%;
+  }
+
+  body.single-custom-multi-day #faq-content .faq-wrapper .faq-link .text-heading {
+    font-size: 24px;
+  }
+
+  body.single-custom-multi-day #faq-content .faq-wrapper .faq-link .faq-answer-wrapper p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  body.single-custom-multi-day #faq-content .faq-wrapper .faq-link .faq-answer-wrapper p {
+    font-size: 16px;
+  }
+}
+
