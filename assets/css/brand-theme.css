@@ -271,6 +271,10 @@ footer .socials a.link[data-social-text]::after {
   margin-bottom: 100px;
 }
 
+#multiday-intro {
+  margin-top: 0;
+}
+
 #multiday-intro .intro-content .text-wrapper {
   padding-block: 20px;
   padding-inline: 4% 3%;
@@ -282,6 +286,11 @@ footer .socials a.link[data-social-text]::after {
 
 #multiday-intro .maintext-paragraph > p {
   max-width: 38ch;
+}
+
+body.single-resort.custom-multi-day-template-default #itinerary .wrapper h3.section-heading {
+  --color: #2C2F33;
+  color: #2C2F33;
 }
 
 /* Global readability adjustment: raise paragraph text size while preserving responsive scaling. */
