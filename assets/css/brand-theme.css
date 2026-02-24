@@ -690,6 +690,31 @@ body.single-resort.villa-resort.postid-1672 #multiday-itinerary {
   margin-bottom: 0;
 }
 
+/* extreme-canyoning: first-pass hero title scale reduction using existing fluid token */
+body.single-resort.villa-resort.postid-1672 #featured[data-villas] .wrapper h1.section-heading {
+  --font-size: var(--fluid-100px);
+  max-width: 15.5ch;
+  padding-inline: 16px;
+}
+
+body.single-resort.villa-resort.postid-1672 #featured[data-villas] .wrapper .top {
+  margin-bottom: 14px;
+}
+
+body.single-resort.villa-resort.postid-1672 #featured[data-villas] .wrapper .area-location {
+  margin-top: 10px;
+  gap: 8px;
+  line-height: 1;
+}
+
+body.single-resort.villa-resort.postid-1672 #featured[data-villas] .wrapper .area-location::before {
+  transform: translateY(1px);
+}
+
+body.single-resort.villa-resort.postid-1672 #featured[data-villas] .wrapper .post-links {
+  padding-top: 32px;
+}
+
 @media (max-width: 1280px) {
   body.single-resort.custom-multi-day-template-default #multiday-itinerary .itinerary-content {
     padding-right: var(--_padding);
