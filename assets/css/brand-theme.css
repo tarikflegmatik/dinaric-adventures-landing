@@ -260,6 +260,50 @@ footer .socials a.link[data-social-text]::after {
   cursor: not-allowed;
 }
 
+/* Keep multiday intro title spacing stable after heading-to-div semantic change. */
+#multiday-intro .multiday-intro-title {
+  font-family: "Satoshi", sans-serif;
+  font-weight: normal;
+  line-height: 1.1;
+  max-width: 1100px;
+  margin-left: unset;
+  margin-top: 0.83em;
+  margin-bottom: 100px;
+}
+
+#multiday-intro .intro-content .text-wrapper {
+  padding-block: 20px;
+  padding-inline: 4% 3%;
+}
+
+#multiday-intro .maintext-paragraph > h2.h4 {
+  margin: 0 0 18px;
+}
+
+#multiday-intro .maintext-paragraph > p {
+  max-width: 38ch;
+}
+
+/* Global readability adjustment: raise paragraph text size while preserving responsive scaling. */
+p {
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1440px) {
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 768px) {
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
 #featured-stories .featured-stories-pagination__btn span {
   font-size: 22px;
   line-height: 1;
@@ -713,6 +757,43 @@ body.single-resort.villa-resort.postid-1672 #featured[data-villas] .wrapper .are
 
 body.single-resort.villa-resort.postid-1672 #featured[data-villas] .wrapper .post-links {
   padding-top: 32px;
+}
+
+/* extreme-canyoning: reduce oversized itinerary media without changing layout structure */
+body.single-resort.villa-resort.postid-1672 #multiday-itinerary .itinerary-content .itinerary-items-wrapper .itinerary-item .image-wrapper {
+  margin-bottom: 64px;
+}
+
+body.single-resort.villa-resort.postid-1672 #multiday-itinerary .itinerary-content .itinerary-items-wrapper .itinerary-item .image-wrapper .big_image {
+  max-height: 510px;
+}
+
+body.single-resort.villa-resort.postid-1672 #multiday-itinerary .itinerary-content .itinerary-items-wrapper .itinerary-item .itinerary-swiper-container {
+  padding-block: 72px 96px;
+}
+
+body.single-resort.villa-resort.postid-1672 #multiday-itinerary .itinerary-content .itinerary-items-wrapper .itinerary-item .itinerary-swiper-container .itinerary-swiper .itinerary-swiper-item .img_wrapper {
+  max-height: 420px;
+}
+
+body.single-resort.villa-resort.postid-1672 #multiday-itinerary .itinerary-content .itinerary-items-wrapper .itinerary-item .itinerary-swiper-container .itinerary-swiper .itinerary-swiper-item h3 {
+  font-size: 26px;
+}
+
+@media (max-width: 1440px) {
+  body.single-resort.villa-resort.postid-1672 #multiday-itinerary .itinerary-content .itinerary-items-wrapper .itinerary-item .itinerary-swiper-container .itinerary-swiper .itinerary-swiper-item h3 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1024px) {
+  body.single-resort.villa-resort.postid-1672 #multiday-itinerary .itinerary-content .itinerary-items-wrapper .itinerary-item .image-wrapper .big_image {
+    max-height: 400px;
+  }
+
+  body.single-resort.villa-resort.postid-1672 #multiday-itinerary .itinerary-content .itinerary-items-wrapper .itinerary-item .itinerary-swiper-container .itinerary-swiper .itinerary-swiper-item .img_wrapper {
+    max-height: 340px;
+  }
 }
 
 @media (max-width: 1280px) {
